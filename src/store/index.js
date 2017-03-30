@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '../router'
 
 let api = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: 'https://vaultkeepr.herokuapp.com/api/',
   timeout: 2000,
   withCredentials: true
 })
@@ -199,7 +199,7 @@ export default {
         .catch(handleError);
     },
     login(email, password) {
-      api.post('http://localhost:3000/login', {
+      api.post('https://vaultkeepr.herokuapp.com/login', {
         email: email,
         password: password
       })
@@ -216,7 +216,7 @@ export default {
         .catch(handleError);
     },
     register(name, email, password) {
-      api.post('http://localhost:3000/register', {
+      api.post('https://vaultkeepr.herokuapp.com/register', {
         name: name,
         email: email,
         password: password
@@ -227,7 +227,7 @@ export default {
         .catch(handleError);
     },
     logout() {
-      api.delete('http://localhost:3000/logout')
+      api.delete('https://vaultkeepr.herokuapp.com/logout')
         .then(res => {
           state.user = {};
           Materialize.toast(res.data.message, 1000);
@@ -236,7 +236,7 @@ export default {
         .catch(handleError);
     },
     authenticate() {
-      api('http://localhost:3000/authenticate')
+      api('https://vaultkeepr.herokuapp.com/authenticate')
         .then(res => {
           if (res.data.data) {
             state.user = res.data.data;
