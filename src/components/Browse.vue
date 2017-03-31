@@ -1,16 +1,16 @@
 <template>
   <div class="container">
-    <form v-if="this.$root.$data.store.state.user._id" @submit.prevent="searchByTag">
+    <!--<form v-if="this.$root.$data.store.state.user._id" @submit.prevent="searchByTag">-->
       <div class="input-field">
-        <input id="search" type="search" v-model="tagSearch" required>
+        <input id="search" type="search" v-model="tagSearch" v-on:keyup="searchByTag">
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         <i class="material-icons">close</i>
       </div>
-    </form>
+    <!--</form>-->
     <div class="row">
       <div v-if="searchResults[0]">
         <div class="col s10">
-          <h4 class="topmargin">Showing results for {{ this.$root.$data.store.state.searchedTerm }}</h4>
+          <h4 class="topmargin">Showing results for {{ tagSearch }}</h4>
         </div>
         <div class="col s2">
           <button @click="clearSearch" class="waves-effect waves-teal btn blue darken-4 right">Clear</button>
@@ -54,17 +54,17 @@
     data() {
       return {
         hoverShow: false,
-        tagSearch: ''
+        tagSearch: '',
+        searchResults: []
       }
     },
     computed: {
       keeps() {
         return this.$root.$data.store.state.keeps;
-      },
-      searchResults() {
-        return this.$root.$data.store.state.searchResults;
-      },
-
+      }
+      // searchResults() {
+      //   return this.$root.$data.store.state.searchResults;
+      // },
     },
     mounted() {
       this.$nextTick(() => {
@@ -72,7 +72,7 @@
         setTimeout(function () {
           $(".button-collapse").sideNav();
           $('.button-collapse').sideNav('hide');
-        }, 500);
+        }, 1000);
       })
       this.$root.$data.store.actions.getPublicKeeps();
     },
@@ -81,11 +81,28 @@
         this.hoverShow = !this.hoverShow;
       },
       clearSearch() {
-        this.$root.$data.store.actions.clearSearch();
-      },
-      searchByTag() {
-        this.$root.$data.store.actions.searchByTag(this.tagSearch);
         this.tagSearch = '';
+        this.searchResults = [];
+      },
+      // searchByTag() {
+      //   this.$root.$data.store.actions.searchByTag(this.tagSearch);
+      //   this.tagSearch = '';
+      // }
+      searchByTag(){
+        if(this.tagSearch != ''){
+        let search = this.tagSearch;
+        let regex = new RegExp(search, 'i');
+        let filtered = [];
+        for(var i = 0; i < this.keeps.length; i++){
+          var keep = this.keeps[i];
+          if(regex.test(keep.tags)){
+            filtered.push(keep)
+          }
+        }
+        this.searchResults = filtered;
+        } else {
+          this.searchResults = [];
+        }
       }
     }
   }

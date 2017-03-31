@@ -26,7 +26,6 @@
         <select id="selected" required>
           <option v-for="vault in myVaults" :value="vault._id">{{ vault.name }}</option>
         </select>
-        <label>Vault</label>
       </div>
       <div class="input-field col s12 center">
         <button type="submit" class="waves-effect waves-teal btn blue darken-4">Create</button>
@@ -55,10 +54,9 @@
       this.$nextTick(() => {
         console.log('initialize select..... hopefully');
         setTimeout(function () {
-          $('select').material_select();
           $(".button-collapse").sideNav();
           $('.button-collapse').sideNav('hide');
-        }, 500);
+        }, 1000);
       })
       this.$root.$data.store.actions.clearSearch();
     },

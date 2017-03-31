@@ -6,7 +6,7 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p class="right-align" v-if="activeKeep.userId._id == user._id && !activeKeep.public"><a @click="toggleEdit"><i class="fa fa-pencil"></i></a> | <a @click="deleteKeep"><i class="fa fa-trash"></i></a></p>
+          <!--<p class="right-align" v-if="activeKeep.userId._id == user._id && !activeKeep.public"><a @click="toggleEdit"><i class="fa fa-pencil"></i></a> | <a @click="deleteKeep"><i class="fa fa-trash"></i></a></p>-->
           <h5 class="center" v-if="!activeKeep.articleLink">{{ activeKeep.title }}</h5>
           <h5 class="center" v-if="activeKeep.articleLink"><a :href="activeKeep.articleLink">{{ activeKeep.title }}</a></h5>
           <p>Created by: {{ activeKeep.userId.name }}</p>
@@ -43,10 +43,10 @@
     <h4>Add to Vault</h4>
     <form @submit.prevent="addToVault" class="row">
       <div class="input-field col s12">
-        <select id="selected">
-          <option v-for="vault in this.$root.$data.store.state.myVaults" :value="vault._id">{{ vault.name }}</option>
+        <select class="">
+          <option v-for="vault in myVaults" :value="vault._id">{{ vault.name }}</option>
         </select>
-        <label>Vault</label>
+        <!--<label>Vault</label>-->
       </div>
       <div class="input-field col s12 center">
         <button type="submit" class="waves-effect waves-teal btn blue darken-4">Add</button>
@@ -72,23 +72,22 @@
       this.$nextTick(() => {
         console.log('initialize select..... hopefully');
         setTimeout(function () {
-          $('select').material_select();
           $(".button-collapse").sideNav();
           $('.button-collapse').sideNav('hide');
-        }, 500);
+        }, 1000);
       })
       this.$root.$data.store.actions.setActiveKeep(this.$route.params.id);
-      this.$root.$data.store.actions.clearSearch();
+      // this.$root.$data.store.actions.clearSearch();
     },
     computed: {
       myVaults() {
-        return this.$root.$data.store.state.myVaults;
+        return this.$root.$data.store.state.myVaults || [];
       },
       activeKeep() {
         return this.$root.$data.store.state.activeKeep;
       },
       user() {
-        return this.$root.$data.store.state.user;
+        return this.$root.$data.store.state.user || {};
       }
     },
     methods: {

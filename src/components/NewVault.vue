@@ -35,7 +35,7 @@
         setTimeout(function () {
           $(".button-collapse").sideNav();
           $('.button-collapse').sideNav('hide');
-        }, 500);
+        }, 1000);
       })
       this.$root.$data.store.actions.clearSearch();
     },

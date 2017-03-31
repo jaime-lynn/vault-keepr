@@ -13,7 +13,7 @@ let state = {
   myVaults: [],
   myKeeps: [],
   activeVault: {},
-  activeKeep: {},
+  activeKeep: {userId : { }},
   searchResults: [],
   searchedTerm: '',
   //Dummy Data

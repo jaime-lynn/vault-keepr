@@ -91,11 +91,12 @@
                 setTimeout(function () {
                     $(".button-collapse").sideNav();
                     $('.button-collapse').sideNav('hide');
-                }, 500);
+                }, 1000);
             })
             this.$root.$data.store.actions.getUserVaults();
             this.$root.$data.store.actions.getUserKeeps();
             this.$root.$data.store.actions.clearSearch();
+            // $('#loginModal').modal('close');
         },
         methods: {
             showAction() {

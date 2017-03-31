@@ -25,16 +25,6 @@
             <li>
                 <div class="divider"></div>
             </li>
-            <li><span style="margin-left: 10px">Search by Tag</span>
-                <form @submit.prevent="searchByTag">
-                    <div class="input-field">
-                        <input id="search" type="search" v-model="tagSearch" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </li>
-            <!--<li><div class="divider"></div></li>-->
             <li><a class="waves-effect" @click="logout">Logout</a></li>
         </ul>
         <div class="navbar-fixed">

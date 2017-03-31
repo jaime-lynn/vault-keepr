@@ -41,4 +41,7 @@
     border-bottom: 1px solid #1B4985;
     box-shadow: 0 1px 0 0 #1B4985;
   }
+  select{
+    display: block;
+  }
 </style>
