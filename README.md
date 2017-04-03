@@ -1,27 +1,10 @@
-# www
+Vault Keepr - a Pinterest clone
+===============================
 
-> A Vue.js project
+Vault Keepr is a clone of Pinterest, but since it utilizes Keeps and Vaults to store them, it is inevitably themed after Fallout. Note that the server is hosted on Heroku for free, so the initial Login or Register request will only cause the server to spin up. You'll need to make a request, wait a few seconds, and then try again.
 
-## Build Setup
+You can view all of the Public Keeps without needing to be logged in, but in order to view details or store Keeps in Vaults, you will need to make an account. There is sample data in the Browse before the server has spun up, that will also trigger the server to wake if you click Browse, wait, and then refresh.
 
-``` bash
-# install dependencies
-npm install
+If you make an account, you can make Vaults to store any Keeps in, you can view Keep details, and you can create new Keeps. Once a Keep is public, it can no longer be changed so make sure to make it private if you want to edit it at all (or if, you know, you don't want anyone else to see it).
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Congratulations on being prepared for the future!
